@@ -1,5 +1,6 @@
 # Workshop #3: Member Functions and Privacy
 * Version 1.0
+* [Version 1.1](#v11) (Added spec for car() query function in Customer that is used in main.cpp)
 
 In this workshop, you will complete your work using member functions and privacy.
 
@@ -165,7 +166,7 @@ The Customer class is typically defined in a header file named Customer.h and im
 # Private data members
 - m_id: an integer holds the customer ID
 - m_name: that is held dynamically in a C string. (char *)
-- m_car: that is a pointer to a Car. (customer's car).
+- m_car: that is a pointer to an unmodifiable Car object. (customer's car).
   > Note that this is not dynamically allocated. It is only a pointer to be set to the address of a "Car" object that exists somewhere.
 
 
@@ -181,7 +182,7 @@ This query method checks if the object is in a safe empty state. A customer is c
 ```C++
 void setEmpty();
 ```
-This method sets the customer to a safe empty state by setting the pointer to null and the id to 0.
+This method sets the customer to a safe empty state by setting the pointers to null and the id to 0.
 
 ```C++
 void deallocateMemory();
@@ -216,6 +217,15 @@ After the customer information is printed, the Car will be displayed.
 	Service Name:     Engine oil change
 	Service Cost:                 50.00
   ```
+
+#### V1.1
+```C++
+const Car& car()const;
+```
+This function returns the car object pointed to by m_car pointer by dereferencing it.
+There is no need to validate the pointer prior to dereferencing. It can be assumed to be valid.
+
+
 ## The Tester Program
 
 [main.cpp](./lab/main.cpp)
